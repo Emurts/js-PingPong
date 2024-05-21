@@ -88,11 +88,11 @@ function mostraRaqueteOponente() {
 
 
 function movimentaMinhaRaquete (){
-  if (keyIsDown(UP_ARROW)){
+  if (keyIsDown("87")){
     yRaquete -= 10;
   }
   
-  if (keyIsDown(DOWN_ARROW)){
+  if (keyIsDown("83")){
     yRaquete += 10;
   }
 }
@@ -112,8 +112,13 @@ function verificaColisaoRaquete(x, y) {
   }
 }
 function movimentaRaqueteOponente(){
-  velocidadeYOponente = yBola - yRaqueteOponente - RaqueteComprimento / 2 - 30;
-  yRaqueteOponente += velocidadeYOponente 
+  if (keyIsDown(UP_ARROW)){
+    yRaqueteOponente -= 10;
+  }
+  
+  if (keyIsDown(DOWN_ARROW)){
+    yRaqueteOponente += 10;
+  }
 }
 function IncluirPlacar(){
   stroke(255)
@@ -132,9 +137,13 @@ function marcaPonto(){
   if (xBola > 590){
     meusPontos += 1;
     ponto.play();
+    xBola = 300;
+    yBola = 200;
   }
   if (xBola < 10){
     pontosDoOponente += 1;
     ponto.play();
+    xBola = 300;
+    yBola = 200;
   }
 }
